@@ -1,0 +1,98 @@
+package com.example.simplerss;
+
+import com.example.simplerss.DialogUrl.DialogCallBack;
+import com.example.simplerss.UrlCursorAdapter.ViewHolderR;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
+
+public class RssListActivity extends Activity implements OnItemClickListener{
+
+	private ListView listView;
+	DataHelperUrl dataHelperUrl;
+	UrlCursorAdapter adapter;
+    private static final String TAG = MainActivity.class.getName();
+
+	private RssListCallBack rssListCallBack;
+
+	public static interface RssListCallBack {
+		public void setFromListUrl(String url);
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_rss_list);
+		dataHelperUrl = new DataHelperUrl(getApplicationContext());
+		listView = (ListView) findViewById(R.id.listViewUrl);
+		//intent = new Intent(this, MainActivity.class);
+		listView.setOnItemClickListener(this);
+		//init();
+		refreshAdapter();
+
+	}
+
+	private void init() {
+		listView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> arg0, View view, int arg2,
+					long arg3) {
+				ViewHolderR holder = (ViewHolderR) view.getTag();
+
+				// intent.putExtra(EXTRA_TITLE, holder.getTitle());
+				//intent.putExtra(MainActivity.EXTRA_URL, holder.getLink());
+				// startActivity(intent);
+				if (rssListCallBack != null){
+					
+					rssListCallBack.setFromListUrl(holder.getLink());
+					//finish();
+				}
+
+			}
+		});
+		refreshAdapter();
+	}
+
+
+		@Override
+		public void onItemClick(AdapterView<?> arg0, View view, int arg2,
+				long arg3) {
+			ViewHolderR holder = (ViewHolderR) view.getTag();
+
+			Intent intent = new Intent();
+		    intent.putExtra("url", holder.getLink());
+		    setResult(RESULT_OK, intent);
+		    finish();
+		    		
+		}
+	
+	private void refreshAdapter() {
+		Cursor rssListCursor = dataHelperUrl.getCursor(DbHelper.RESOURCE_TABLE);
+		adapter = new UrlCursorAdapter(RssListActivity.this, rssListCursor,
+				true);
+		listView.setAdapter(adapter);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.rss_list, menu);
+		return true;
+	}
+	
+	public void setRssListCallBack(RssListCallBack rssListCallBack){
+		this.rssListCallBack = rssListCallBack;
+		/*Log.d(TAG, "OOOOOOOOOOOOOOOO");
+		rssListCallBack.setFromListUrl("http://feeds.bbci.co.uk/news/rss.xml");*/
+	}
+
+}

@@ -1,2 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.example.simplerss.UrlCursorAdapter.ViewHolderR"/>
+<fullyQualifiedTypeName name="com.example.simplerss.RssListActivity.RssListCallBack"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.example.simplerss.UrlCursorAdapter.ViewHolder"/>
+<fullyQualifiedTypeName name="com.example.simplerss.R.id"/>
+<fullyQualifiedTypeName name="com.example.simplerss.R.menu"/>
+<fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="android.view.ContextMenu"/>
+<fullyQualifiedTypeName name="android.view.ContextMenu.ContextMenuInfo"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+</qualifiedTypeNameHistroy>
