@@ -10,4 +10,11 @@
 <fullyQualifiedTypeName name="android.view.ContextMenu"/>
 <fullyQualifiedTypeName name="android.view.ContextMenu.ContextMenuInfo"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="com.android.volley.RequestQueue"/>
+<fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="com.android.volley.toolbox.Volley"/>
+<fullyQualifiedTypeName name="android.support.v4.util.LruCache"/>
+<fullyQualifiedTypeName name="com.android.volley.toolbox.ImageLoader.ImageCache"/>
+<fullyQualifiedTypeName name="android.graphics.Bitmap"/>
+<fullyQualifiedTypeName name="com.android.volley.toolbox.ImageLoader"/>
 </qualifiedTypeNameHistroy>
