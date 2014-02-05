@@ -1,0 +1,62 @@
+package com.example.simplerss;
+
+import com.example.db.DataHelper;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+
+public class UrlEditActivity extends Activity implements OnClickListener{
+	
+	EditText textUrl;
+	EditText textUrlTitle;
+	
+	DataHelper dataHelper;
+	
+	String title;
+	String url; 
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_url_edit);
+		
+		Intent intent = getIntent();
+		
+		dataHelper = new DataHelper(getApplicationContext());
+	    
+	    title = intent.getStringExtra("title");
+	    url = intent.getStringExtra("url");
+	    int id = intent.getIntExtra("id", 0);
+	    
+	    textUrlTitle = (EditText) findViewById(R.id.editTitle);
+	    textUrl = (EditText) findViewById(R.id.editUrl);
+	    
+	    textUrlTitle.setText(title);
+	    textUrl.setText(url);
+	    
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.url_edit, menu);
+		return true;
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch(v.getId()){
+		case R.id.buttonEditSet:
+			textUrlTitle.getText();
+			textUrl.getText();
+			//dataHelper.updateRow(rowId);
+		}
+		
+	}
+
+}
